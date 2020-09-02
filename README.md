@@ -1,24 +1,29 @@
-# vue-plain
+## Welcome our Vue / JS developer code test
+### Introduction
+The test centers around a small simple Vue application. The app is very simple and in many ways poorly written. And your job is to improve the quality of the code base.
 
-## Project setup
-```
-npm install
-```
+### About the app
+The appplciation is a very simple tool - a form of mixture between a "news generator" and a "to-do list" app. The functionality is very limited:
+- The app has to database or persistence layer
+- It allows the user to randomly generate a news source
+- It gives the ability to go to the given site 
+- And the ability to mark a source as "read"
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### How the app is written
+The app is written in plain Vue.js 2 and can be "run" by simply running: 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+`npm run serve`
 
-### Lints and fixes files
-```
-npm run lint
-```
+The code is not very well written and have a lot of improvement potential. Furthermore, the code is not implementing TypeScript or vue-decorators.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Your task
+You need to:
+- rewrite the application with the same basic functionality
+- use TypeScript
+- use Vue-decorators instead of basic JS approach
+- apply "clean code" principles as you would on a proper project (google "uncle bob - clean code" in case you want our take on this - e.g. https://www.youtube.com/watch?v=7EmboKQH8lM)
+- improve the existing functionality in order to handle common egde cases and improve the 
+- make further adjustments assuming the code had to go into production and that this is part of a larger vue application that might re-use some of this code elsewhere
+- make selective improvements to the design and UX
+
+
