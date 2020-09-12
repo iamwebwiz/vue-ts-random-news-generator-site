@@ -1,32 +1,39 @@
 <template>
   <div>
     <div
+      class="bg-white px-6 py-4 rounded shadow"
       @mouseenter="setSelectedArticle(article)"
       @mouseleave="unsetSelectedArticle(article)"
       @click="toggleShowArticleAbstract(article)"
     >
-      <div class="flex">
-        <span class="text-grey-600">Name:</span>
-        <span class="font-bold text-gray-900">
-          {{ article.title }} -
-          <a :href="article.url">Link</a>
-        </span>
+      <div class="flex justify-between">
+        <h2 class="font-semibold text-sm sm:text-base capitalize text-gray-800">
+          {{ article.title }}
+        </h2>
+        <a
+          :href="article.url"
+          class="text-gray-500 text-sm uppercase"
+          target="_blank"
+          >Link</a
+        >
       </div>
-      <div>
-        <button
-          class="bg-red-400 text-white py-1 px-3 rounded-full font-bold shadow my-3"
+
+      <div class="mt-6 mb-3">
+        <a
+          class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md font-semibold shadow my-3 mr-2"
           @click="markAsRead(article, index)"
+          href="javascript:;"
         >
           Read it
-        </button>
+        </a>
         <a
-          class="bg-red-400 text-white py-1 px-3 rounded-full font-bold shadow my-3"
+          class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
           target="_blank"
           :href="article.url"
           >Open</a
         >
       </div>
-      <div v-if="article.showAbstract" class="bg-gray-400 p-4">
+      <div v-if="article.showAbstract" class="bg-gray-300 p-4 rounded-md mt-6">
         Abstract: {{ article.abstract }}
       </div>
     </div>
