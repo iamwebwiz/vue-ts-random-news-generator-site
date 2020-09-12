@@ -7,14 +7,20 @@
           style="min-height: 100vh; min-width: 100%;"
         >
           <div>
-            <div class="flex justify-between">
-              <h1
-                class="text-sm sm:text-lg lg:text-2xl font-semibold py-4 capitalize"
-              >
+            <div class="block sm:flex sm:justify-between">
+              <h1 class="text-lg lg:text-2xl font-semibold py-4 capitalize">
                 {{ appName }}
               </h1>
               <button
-                class="bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
+                class="hidden sm:block bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
+                @click.prevent="fetchRandomArticle"
+              >
+                Add reading
+              </button>
+
+              <!-- Mobile button -->
+              <button
+                class="block w-full sm:hidden bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
                 @click.prevent="fetchRandomArticle"
               >
                 Add reading
