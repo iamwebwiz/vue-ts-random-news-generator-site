@@ -20,36 +20,14 @@
                 :key="index"
                 class="bg-gray-200 px-4 py-2 my-2 rounded shadow"
               >
-                <div
-                  @mouseenter="setSelectedArticle(article)"
-                  @mouseleave="unsetSelectedArticle(article)"
-                  @click="toggleShowArticleAbstract(article)"
-                >
-                  <div class="flex">
-                    <span class="text-grey-600">Name:</span>
-                    <span class="font-bold text-gray-900">
-                      {{ article.title }} -
-                      <a :href="article.url">Link</a>
-                    </span>
-                  </div>
-                  <div>
-                    <button
-                      class="bg-red-400 text-white py-1 px-3 rounded-full font-bold shadow my-3"
-                      @click="markAsRead(article, index)"
-                    >
-                      Read it
-                    </button>
-                    <a
-                      class="bg-red-400 text-white py-1 px-3 rounded-full font-bold shadow my-3"
-                      target="_"
-                      :href="article.url"
-                      >Open</a
-                    >
-                  </div>
-                  <div v-if="article.showAbstract" class="bg-gray-400 p-4">
-                    Abstract: {{ article.abstract }}
-                  </div>
-                </div>
+                <article-item
+                  :article="article"
+                  :index="index"
+                  :markAsRead="markAsRead"
+                  :setSelectedArticle="setSelectedArticle"
+                  :toggleShowArticleAbstract="toggleShowArticleAbstract"
+                  :unsetSelectedArticle="unsetSelectedArticle"
+                ></article-item>
               </div>
             </div>
             <button
@@ -68,6 +46,7 @@
 <script lang="ts">
   import { Component, Vue } from "vue-property-decorator";
   import axios from "axios";
+  import ArticleItem from "./components/ArticleItem.vue";
 
   interface ArticleType {
     title: string;
@@ -76,7 +55,11 @@
     showAbstract: boolean;
   }
 
-  @Component({})
+  @Component({
+    components: {
+      ArticleItem,
+    },
+  })
   export default class App extends Vue {
     private appName: string = "Random news site generator";
     private readArticles: Array<ArticleType> = [];
@@ -93,7 +76,6 @@
     }
 
     public fetchRandomArticle() {
-      // const axios = require("axios");
       // create get call to grab list of potential article soruces
       try {
         axios.get("/test-data.json").then((response: any) => {
