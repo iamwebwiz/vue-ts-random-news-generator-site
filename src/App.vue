@@ -12,7 +12,7 @@
                 {{ appName }}
               </h1>
               <button
-                class="hidden sm:block bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
+                class="hidden sm:block focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
                 @click.prevent="fetchRandomArticle"
               >
                 Add reading
@@ -20,17 +20,17 @@
 
               <!-- Mobile buttons -->
               <button
-                class="block w-full sm:hidden bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
+                class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
                 @click.prevent="fetchRandomArticle"
               >
                 Add reading
               </button>
 
               <button
-                class="block w-full sm:hidden bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
+                class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
                 @click.prevent=""
               >
-                Completed reads
+                Read articles
               </button>
               <!-- /Mobile buttons -->
             </div>

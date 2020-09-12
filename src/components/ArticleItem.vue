@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="bg-white px-6 py-4 rounded shadow"
+      class="bg-white px-6 py-4 rounded shadow cursor-pointer"
       @mouseenter="setSelectedArticle(article)"
       @mouseleave="unsetSelectedArticle(article)"
       @click="toggleShowArticleAbstract(article)"
