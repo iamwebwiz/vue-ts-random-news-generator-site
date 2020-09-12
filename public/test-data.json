@@ -4,27 +4,32 @@
     {
       "title": "The daily tech fix - gots to have it",
       "url": "https://techcrunch.com",
-      "abstract": "Who invested in who? what is the big tech up to?"
+      "abstract": "Who invested in who? what is the big tech up to?",
+      "showAbstract": false
     },
     {
       "title": "HN: daily geeek fix",
       "url": "https://news.ycombinator.com",
-      "abstract": "This one is awesome - for sure"
+      "abstract": "This one is awesome - for sure",
+      "showAbstract": false
     },
     {
       "title": "Semi public Danish news - no paywall",
       "url": "https://tv2.dk",
-      "abstract": "A daily read for most Danish including my dad"
+      "abstract": "A daily read for most Danish including my dad",
+      "showAbstract": false
     },
     {
       "title": "Daily Danish business news - paywall",
       "url": "https://borsen.dk",
-      "abstract": "Note: in danish - maintstram business news"
+      "abstract": "Note: in danish - maintstram business news",
+      "showAbstract": false
     },
     {
       "title": "Good old FT",
       "url": "https://tf.com",
-      "abstract": "how are the return? what to invest in - find it here"
+      "abstract": "how are the return? what to invest in - find it here",
+      "showAbstract": false
     }
   ]
 }
