@@ -11,12 +11,22 @@
               <h1 class="text-lg lg:text-2xl font-semibold py-4 capitalize">
                 {{ appName }}
               </h1>
-              <button
-                class="hidden sm:block focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
-                @click.prevent="fetchRandomArticle"
-              >
-                Add reading
-              </button>
+
+              <div class="flex justify-around">
+                <button
+                  class="hidden sm:block focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3 mr-2"
+                  @click.prevent="fetchRandomArticle"
+                >
+                  Add reading
+                </button>
+                <button
+                  class="hidden sm:block focus:outline-none focus:outline-shadow bg-gray-600 hover:bg-gray-700 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
+                  @click="toggleArticlesToDisplay"
+                >
+                  <span v-show="showUnreadArticles">Read articles</span>
+                  <span v-show="!showUnreadArticles">Unread articles</span>
+                </button>
+              </div>
 
               <!-- Mobile buttons -->
               <button
@@ -27,10 +37,11 @@
               </button>
 
               <button
-                class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
-                @click.prevent=""
+                class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-gray-600 hover:bg-gray-700 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
+                @click="toggleArticlesToDisplay"
               >
-                Read articles
+                <span v-show="showUnreadArticles">Read articles</span>
+                <span v-show="!showUnreadArticles">Unread articles</span>
               </button>
               <!-- /Mobile buttons -->
             </div>
@@ -39,25 +50,26 @@
               {{ readingStatus }}
             </h3>
 
-            <div v-if="unreadArticles.length > 0" class="my-6">
-              <h2 class="text-sm sm:text-lg lg:text-2xl capitalize">
-                Reading list:
-              </h2>
-              <div
-                class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-4"
-              >
-                <div v-for="(article, index) in unreadArticles" :key="index">
-                  <article-item
-                    :article="article"
-                    :index="index"
-                    :markAsRead="markAsRead"
-                    :setSelectedArticle="setSelectedArticle"
-                    :toggleShowArticleAbstract="toggleShowArticleAbstract"
-                    :unsetSelectedArticle="unsetSelectedArticle"
-                  ></article-item>
-                </div>
-              </div>
+            <!-- Unread articles -->
+            <div v-show="showUnreadArticles">
+              <unread-articles
+                :articles="unreadArticles"
+                :markAsRead="markAsRead"
+                :setSelectedArticle="setSelectedArticle"
+                :toggleShowArticleAbstract="toggleShowArticleAbstract"
+                :unsetSelectedArticle="unsetSelectedArticle"
+              ></unread-articles>
             </div>
+            <!-- /Unread articles -->
+
+            <!-- Read articles -->
+            <div v-show="!showUnreadArticles">
+              <read-articles
+                :articles="readArticles"
+                :toggleShowArticleAbstract="toggleShowArticleAbstract"
+              ></read-articles>
+            </div>
+            <!-- /Read articles -->
           </div>
         </div>
       </div>
@@ -68,7 +80,8 @@
 <script lang="ts">
   import { Component, Vue } from "vue-property-decorator";
   import axios from "axios";
-  import ArticleItem from "@/components/ArticleItem.vue";
+  import UnreadArticles from "@/components/UnreadArticles/Index.vue";
+  import ReadArticles from "@/components/ReadArticles/Index.vue";
 
   interface ArticleType {
     title: string;
@@ -79,7 +92,8 @@
 
   @Component({
     components: {
-      ArticleItem,
+      UnreadArticles,
+      ReadArticles,
     },
   })
   export default class App extends Vue {
@@ -87,6 +101,7 @@
     private readArticles: Array<ArticleType> = [];
     private unreadArticles: Array<ArticleType> = [];
     private selectedArticle?: ArticleType | null = null;
+    private showUnreadArticles: boolean = true;
 
     get readingStatus(): string {
       if (this.readArticles.length == 0 && this.unreadArticles.length == 0)
@@ -95,6 +110,10 @@
         return "Was that it? Add more below";
       if (this.unreadArticles.length == 0) return "Get reading!";
       return "Articles";
+    }
+
+    public toggleArticlesToDisplay() {
+      this.showUnreadArticles = !this.showUnreadArticles;
     }
 
     public fetchRandomArticle() {
@@ -123,13 +142,13 @@
       this.selectedArticle = article;
     }
 
-    public unsetSelectedArticle(article: ArticleType) {
+    public unsetSelectedArticle(article: ArticleType): void {
       if (this.selectedArticle?.title == article.title) {
         this.selectedArticle = null;
       }
     }
 
-    public markAsRead(article: ArticleType, index: number) {
+    public markAsRead(article: ArticleType, index: number): void {
       this.readArticles.push(article);
 
       this.unreadArticles.splice(index, 1);
