@@ -18,13 +18,21 @@
                 Add reading
               </button>
 
-              <!-- Mobile button -->
+              <!-- Mobile buttons -->
               <button
                 class="block w-full sm:hidden bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
                 @click.prevent="fetchRandomArticle"
               >
                 Add reading
               </button>
+
+              <button
+                class="block w-full sm:hidden bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
+                @click.prevent=""
+              >
+                Completed reads
+              </button>
+              <!-- /Mobile buttons -->
             </div>
 
             <h3 class="font-semibold text-md text-gray-700 my-4">
