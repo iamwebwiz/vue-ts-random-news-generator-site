@@ -1,32 +1,30 @@
 {
-    "success": true, 
-    "results": [
-        {
-            "title": "The daily tech fix - gots to have it",
-            "url": "https://techcrunch.com",
-            "abstract": "Who invested in who? what is the big tech up to?"
-        },
-        {
-            "title": "HN: daily geeek fix",
-            "url": "https://news.ycombinator.com",
-            "abstract": "This one is awesome - for sure"
-        },
+  "success": true,
+  "results": [
     {
-        "title": "Semi public Danish news - no paywall",
-        "url": "https://tv2.dk",
-        "abstract": "A daily read for most Danish including my dad"
+      "title": "The daily tech fix - gots to have it",
+      "url": "https://techcrunch.com",
+      "abstract": "Who invested in who? what is the big tech up to?"
     },
     {
-        "title": "Daily Danish business news - paywall",
-        "url": "https://borsen.dk",
-        "abstract": "Note: in danish - maintstram business news"
+      "title": "HN: daily geeek fix",
+      "url": "https://news.ycombinator.com",
+      "abstract": "This one is awesome - for sure"
     },
     {
-        "title": "Good old FT",
-        "url": "https://tf.com",
-        "abstract": "how are the return? what to invest in - find it here"
+      "title": "Semi public Danish news - no paywall",
+      "url": "https://tv2.dk",
+      "abstract": "A daily read for most Danish including my dad"
+    },
+    {
+      "title": "Daily Danish business news - paywall",
+      "url": "https://borsen.dk",
+      "abstract": "Note: in danish - maintstram business news"
+    },
+    {
+      "title": "Good old FT",
+      "url": "https://tf.com",
+      "abstract": "how are the return? what to invest in - find it here"
     }
-    
-]
-
+  ]
 }
