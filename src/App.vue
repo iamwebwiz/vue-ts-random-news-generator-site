@@ -16,6 +16,7 @@
                 <button
                   class="hidden sm:block focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3 mr-2"
                   @click.prevent="fetchRandomArticle"
+                  v-if="showUnreadArticles"
                 >
                   Add reading
                 </button>
@@ -32,6 +33,7 @@
               <button
                 class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
                 @click.prevent="fetchRandomArticle"
+                v-if="showUnreadArticles"
               >
                 Add reading
               </button>
@@ -79,7 +81,7 @@
 
 <script lang="ts">
   import { Component, Vue } from "vue-property-decorator";
-  import axios from "axios";
+  import { fetchData } from "@/services/DataFetcherService";
   import UnreadArticles from "@/components/UnreadArticles/Index.vue";
   import ReadArticles from "@/components/ReadArticles/Index.vue";
 
@@ -116,19 +118,19 @@
       this.showUnreadArticles = !this.showUnreadArticles;
     }
 
-    public fetchRandomArticle() {
+    public async fetchRandomArticle() {
       // create get call to grab list of potential article soruces
       try {
-        axios.get("/test-data.json").then((response) => {
-          // data from response
-          let data = response.data;
-          // make random number
-          let randomNumber = Math.max(Math.floor(Math.random() * 5) - 1, 0);
-          // get random article
-          let randomArticle: ArticleType = data.results[randomNumber];
-          // update the state
-          this.unreadArticles.push(randomArticle);
-        });
+        let articles: any = await fetchData("/test-data.json");
+
+        let randomNumber: number = Math.max(
+          Math.floor(Math.random() * articles.length) - 1,
+          0
+        );
+
+        let randomArticle: ArticleType = articles[randomNumber];
+
+        this.unreadArticles.push(randomArticle);
       } catch (error) {
         alert(error);
       }
