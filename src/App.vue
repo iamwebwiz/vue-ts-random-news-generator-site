@@ -2,13 +2,10 @@
   <div>
     <div>
       <div>
-        <div
-          class="w-full h-full bg-gray-200 p-8"
-          style="min-height: 100vh; min-width: 100%;"
-        >
+        <div class="w-full h-full bg-gray-200 p-8" style="min-height: 100vh; min-width: 100%;">
           <div>
             <div class="block sm:flex sm:justify-between">
-              <h1 class="text-lg lg:text-2xl font-semibold py-4 capitalize">
+              <h1 class="text-center sm:text-left text-lg lg:text-2xl font-semibold py-4 capitalize">
                 {{ appName }}
               </h1>
 
@@ -95,8 +92,8 @@
   @Component({
     components: {
       UnreadArticles,
-      ReadArticles,
-    },
+      ReadArticles
+    }
   })
   export default class App extends Vue {
     private appName: string = "Random news site generator";
@@ -108,13 +105,12 @@
     get readingStatus(): string {
       if (this.readArticles.length == 0 && this.unreadArticles.length == 0)
         return "Add something to read to get the show started";
-      if (this.readArticles.length > 0 && this.unreadArticles.length == 0)
-        return "Was that it? Add more below";
+      if (this.readArticles.length > 0 && this.unreadArticles.length == 0) return "Was that it? Add more below";
       if (this.unreadArticles.length == 0) return "Get reading!";
       return "Articles";
     }
 
-    public toggleArticlesToDisplay() {
+    public toggleArticlesToDisplay(): void {
       this.showUnreadArticles = !this.showUnreadArticles;
     }
 
@@ -123,10 +119,7 @@
       try {
         let articles: any = await fetchData("/test-data.json");
 
-        let randomNumber: number = Math.max(
-          Math.floor(Math.random() * articles.length) - 1,
-          0
-        );
+        let randomNumber: number = Math.max(Math.floor(Math.random() * articles.length) - 1, 0);
 
         let randomArticle: ArticleType = articles[randomNumber];
 

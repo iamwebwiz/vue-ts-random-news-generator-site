@@ -4,9 +4,7 @@
       <h2 class="text-sm sm:text-lg lg:text-2xl capitalize">
         Read articles:
       </h2>
-      <div
-        class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-4"
-      >
+      <div class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-4">
         <div v-for="(article, index) in articles" :key="index">
           <article-item
             :article="article"
