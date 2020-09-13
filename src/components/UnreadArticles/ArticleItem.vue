@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
+  import { Vue, Component, Prop } from "vue-property-decorator";
 
   interface ArticleType {
     title: string;
@@ -45,29 +45,24 @@
     showAbstract: boolean;
   }
 
-  export default Vue.extend({
-    name: "ArticleItem",
-    props: {
-      article: {
-        type: Object as () => ArticleType,
-        required: true,
-      },
-      index: {
-        type: Number,
-        required: true,
-      },
-      markAsRead: {
-        required: true,
-      },
-      setSelectedArticle: {
-        required: true,
-      },
-      unsetSelectedArticle: {
-        required: true,
-      },
-      toggleShowArticleAbstract: {
-        required: true,
-      },
-    },
-  });
+  @Component
+  export default class ArticleItem extends Vue {
+    @Prop()
+    private article!: ArticleType;
+
+    @Prop()
+    private index!: Number;
+
+    @Prop()
+    private markAsRead!: any;
+
+    @Prop()
+    private setSelectedArticle!: any;
+
+    @Prop()
+    private unsetSelectedArticle!: any;
+
+    @Prop()
+    private toggleShowArticleAbstract!: any;
+  }
 </script>

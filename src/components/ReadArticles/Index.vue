@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
+  import { Vue, Component, Prop } from "vue-property-decorator";
   import ArticleItem from "./ArticleItem.vue";
 
   interface ArticleType {
@@ -33,19 +33,16 @@
     showAbstract: boolean;
   }
 
-  export default Vue.extend({
-    name: "ReadArticles",
+  @Component({
     components: {
       ArticleItem,
     },
-    props: {
-      articles: {
-        type: Array as () => Array<ArticleType>,
-        required: true,
-      },
-      toggleShowArticleAbstract: {
-        required: true,
-      },
-    },
-  });
+  })
+  export default class ReadArticles extends Vue {
+    @Prop()
+    private articles!: Array<ArticleType>;
+
+    @Prop()
+    private toggleShowArticleAbstract!: any;
+  }
 </script>

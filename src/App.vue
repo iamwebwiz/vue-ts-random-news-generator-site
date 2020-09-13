@@ -1,76 +1,72 @@
 <template>
   <div>
-    <div>
+    <div class="w-full h-full bg-gray-200 p-8" style="min-height: 100vh; min-width: 100%;">
       <div>
-        <div class="w-full h-full bg-gray-200 p-8" style="min-height: 100vh; min-width: 100%;">
-          <div>
-            <div class="block sm:flex sm:justify-between">
-              <h1 class="text-center sm:text-left text-lg lg:text-2xl font-semibold py-4 capitalize">
-                {{ appName }}
-              </h1>
+        <div class="block sm:flex sm:justify-between">
+          <h1 class="text-center sm:text-left text-lg lg:text-2xl font-semibold py-4 capitalize">
+            {{ appName }}
+          </h1>
 
-              <div class="flex justify-around">
-                <button
-                  class="hidden sm:block focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3 mr-2"
-                  @click.prevent="fetchRandomArticle"
-                  v-if="showUnreadArticles"
-                >
-                  Add reading
-                </button>
-                <button
-                  class="hidden sm:block focus:outline-none focus:outline-shadow bg-gray-600 hover:bg-gray-700 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
-                  @click="toggleArticlesToDisplay"
-                >
-                  <span v-show="showUnreadArticles">Read articles</span>
-                  <span v-show="!showUnreadArticles">Unread articles</span>
-                </button>
-              </div>
-
-              <!-- Mobile buttons -->
-              <button
-                class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
-                @click.prevent="fetchRandomArticle"
-                v-if="showUnreadArticles"
-              >
-                Add reading
-              </button>
-
-              <button
-                class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-gray-600 hover:bg-gray-700 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
-                @click="toggleArticlesToDisplay"
-              >
-                <span v-show="showUnreadArticles">Read articles</span>
-                <span v-show="!showUnreadArticles">Unread articles</span>
-              </button>
-              <!-- /Mobile buttons -->
-            </div>
-
-            <h3 class="font-semibold text-md text-gray-700 my-4">
-              {{ readingStatus }}
-            </h3>
-
-            <!-- Unread articles -->
-            <div v-show="showUnreadArticles">
-              <unread-articles
-                :articles="unreadArticles"
-                :markAsRead="markAsRead"
-                :setSelectedArticle="setSelectedArticle"
-                :toggleShowArticleAbstract="toggleShowArticleAbstract"
-                :unsetSelectedArticle="unsetSelectedArticle"
-              ></unread-articles>
-            </div>
-            <!-- /Unread articles -->
-
-            <!-- Read articles -->
-            <div v-show="!showUnreadArticles">
-              <read-articles
-                :articles="readArticles"
-                :toggleShowArticleAbstract="toggleShowArticleAbstract"
-              ></read-articles>
-            </div>
-            <!-- /Read articles -->
+          <div class="flex justify-around">
+            <button
+              class="hidden sm:block focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3 mr-2"
+              @click.prevent="fetchRandomArticle"
+              v-if="showUnreadArticles"
+            >
+              Add reading
+            </button>
+            <button
+              class="hidden sm:block focus:outline-none focus:outline-shadow bg-gray-600 hover:bg-gray-700 transition duration-300 text-white py-1 px-3 rounded-md font-semibold shadow my-3"
+              @click="toggleArticlesToDisplay"
+            >
+              <span v-show="showUnreadArticles">Read articles</span>
+              <span v-show="!showUnreadArticles">Unread articles</span>
+            </button>
           </div>
+
+          <!-- Mobile buttons -->
+          <button
+            class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-red-500 hover:bg-red-600 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
+            @click.prevent="fetchRandomArticle"
+            v-if="showUnreadArticles"
+          >
+            Add reading
+          </button>
+
+          <button
+            class="block w-full sm:hidden focus:outline-none focus:outline-shadow bg-gray-600 hover:bg-gray-700 transition duration-300 text-white py-3 px-3 rounded-md font-semibold shadow my-3"
+            @click="toggleArticlesToDisplay"
+          >
+            <span v-show="showUnreadArticles">Read articles</span>
+            <span v-show="!showUnreadArticles">Unread articles</span>
+          </button>
+          <!-- /Mobile buttons -->
         </div>
+
+        <h3 class="font-semibold text-md text-gray-700 my-4">
+          {{ readingStatus }}
+        </h3>
+
+        <!-- Unread articles -->
+        <div v-show="showUnreadArticles">
+          <unread-articles
+            :articles="unreadArticles"
+            :markAsRead="markAsRead"
+            :setSelectedArticle="setSelectedArticle"
+            :toggleShowArticleAbstract="toggleShowArticleAbstract"
+            :unsetSelectedArticle="unsetSelectedArticle"
+          ></unread-articles>
+        </div>
+        <!-- /Unread articles -->
+
+        <!-- Read articles -->
+        <div v-show="!showUnreadArticles">
+          <read-articles
+            :articles="readArticles"
+            :toggleShowArticleAbstract="toggleShowArticleAbstract"
+          ></read-articles>
+        </div>
+        <!-- /Read articles -->
       </div>
     </div>
   </div>
@@ -92,8 +88,8 @@
   @Component({
     components: {
       UnreadArticles,
-      ReadArticles
-    }
+      ReadArticles,
+    },
   })
   export default class App extends Vue {
     private appName: string = "Random news site generator";

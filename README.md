@@ -1,33 +1,33 @@
 ## NoMore 2020 Vue / JS developer code test
+
 ### Introduction
+
 The test centers around a small simple Vue application. The app is very simple and in many ways poorly written. And your job is to improve the quality of the code base.
 
 ### About the app
+
 The appplciation is a very simple tool - a form of mixture between a "news generator" and a "to-do list" app. The functionality is very limited:
+
 - The app has to database or persistence layer
 - It allows the user to randomly generate a news source
-- It gives the ability to go to the given site 
+- It gives the ability to go to the given site
 - And the ability to mark a source as "read"
 
 ### How the app is written
-The app is written in plain Vue.js 2 and can be "run" by simply running: 
+
+The app is written in plain Vue.js 2 and can be "run" by simply running:
 
 `npm run serve`
 
-The code is not very well written and have a lot of improvement potential. Furthermore, the code is not implementing TypeScript or vue-decorators.
+## Task
 
-## Your task
-### What you need to do:
-- rewrite the application with the same basic functionality
-- use TypeScript
-- use Vue-decorators instead of basic JS approach
-- apply "clean code" principles as you would on a proper project (google "uncle bob - clean code" in case you want our take on this - e.g. https://www.youtube.com/watch?v=7EmboKQH8lM)
-- improve the existing functionality in order to handle common egde cases and how it is written
-- make further adjustments assuming the code had to go into production and that this is part of a larger vue application that might re-use some of this code elsewhere
-- make selective improvements to the design and UX
+### What was done
 
-### How to proceed with the test
-- fork the code into your own Github repository
-- commit changes similar to how you would do on normal team
-- once "ready to share" provide access to the repository to ahthomsen@gmail.com
-- please share any assumptions or thoughts as part of the README.me (feel free to delete this one)
+- The application was rewritten and the basic functionalities were retained
+- Added support for TypeScript in the codebase
+- Vue-decorators pattern/api was used instead of the options api which comes with Vue.js 2 by default
+- Split page into components so it is easier to reuse across different other components/views (useful when the app grows big.)
+- Notable UI/UX improvements:
+  - Instead of displaying an articles's abstract when cursor is placed over the article, it is toggled per click on the article. So, by default now, an article's abstract is not shown, until the article is clicked
+  - Added responsive design so the app is easier to look at on mobile devices, small screens and larger breakpoints - CSS Grids was taken advantage of here
+  - Added a button to toggle the articles to display (unread/read) - by default, **unread** articles are displayed first, a user can then decide to see articles they've "marked as read" by clicking on the button
