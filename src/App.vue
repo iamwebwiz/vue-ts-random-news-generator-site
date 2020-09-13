@@ -3,9 +3,7 @@
     <div class="w-full h-full bg-gray-200 p-8" style="min-height: 100vh; min-width: 100%;">
       <div>
         <div class="block sm:flex sm:justify-between">
-          <h1 class="text-center sm:text-left text-lg lg:text-2xl font-semibold py-4 capitalize">
-            {{ appName }}
-          </h1>
+          <heading :text="appName"></heading>
 
           <div class="flex justify-around">
             <button
@@ -43,9 +41,7 @@
           <!-- /Mobile buttons -->
         </div>
 
-        <h3 class="font-semibold text-md text-gray-700 my-4">
-          {{ readingStatus }}
-        </h3>
+        <reading-status :text="readingStatus"></reading-status>
 
         <!-- Unread articles -->
         <div v-show="showUnreadArticles">
@@ -77,6 +73,8 @@
   import { fetchData } from "@/services/DataFetcherService";
   import UnreadArticles from "@/components/UnreadArticles/Index.vue";
   import ReadArticles from "@/components/ReadArticles/Index.vue";
+  import Heading from "@/components/Heading.vue";
+  import ReadingStatus from "@/components/ReadingStatus.vue";
 
   interface ArticleType {
     title: string;
@@ -89,6 +87,8 @@
     components: {
       UnreadArticles,
       ReadArticles,
+      Heading,
+      ReadingStatus,
     },
   })
   export default class App extends Vue {
