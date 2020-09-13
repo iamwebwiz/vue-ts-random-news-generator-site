@@ -32,5 +32,6 @@ The app is written in plain Vue.js 2 and can be "run" by simply running:
   - Added responsive design so the app is easier to look at on mobile devices, small screens and larger breakpoints - CSS Grids was taken advantage of here
   - Added a button to toggle the articles to display (unread/read) - by default, **unread** articles are displayed first, a user can then decide to see articles they've "marked as read" by clicking on the button
 - A brief video recording has been made for the visual modifications. Please [check the recording here](https://www.loom.com/share/020310e79c014ac89995aad7eef721e3).
+- The app was deployed to Netlify. You can [access it here](https://flamboyant-dubinsky-530416.netlify.app/)
 
 Thank you.
